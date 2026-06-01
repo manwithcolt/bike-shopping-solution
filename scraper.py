@@ -14,12 +14,17 @@ def save(data):
 bikes = load()
 
 # Demo-Daten (später echte Shops)
-bikes.append({
+new_bike = {
     "dealer": "Canyon",
     "model": "Grizl CF SL",
     "price": 2399,
     "frame": "carbon",
     "url": "https://www.canyon.com"
-})
+}
 
-save(bikes)
+if not any(
+    b.get("model") == new_bike["model"]
+    and b.get("dealer") == new_bike["dealer"]
+    for b in bikes
+):
+    bikes.append(new_bike)
