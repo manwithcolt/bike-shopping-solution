@@ -2,17 +2,17 @@ name: Daily Bike Update
 
 on:
   schedule:
--cron: “0 5 * * *”
-workflow_dispatch:
+    -cron: “0 5 * * *”
+  workflow_dispatch:
 
 permissions:
-contents: write
+  contents: write
 
 jobs:
-build:
-runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-latest
 
-steps:
+    steps:
   - name: Checkout repository
     uses: actions/checkout@v4
   - name: Setup Python
