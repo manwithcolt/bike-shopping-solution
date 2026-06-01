@@ -1,23 +1,16 @@
 [
   {
     "dealer": "Canyon",
-    "model": "Grizl CF SL",
+    "model": "Grizl CF SL 8",
+    "category": "Gravel",
+    "frame": "Carbon",
+    "groupset": "Shimano GRX 820",
+    "weight": "8.9 kg",
+    "wheelset": "DT Swiss G1800",
     "price": 2399,
-    "frame": "carbon",
-    "url": "https://www.canyon.com"
-  },
-  {
-    "dealer": "Canyon",
-    "model": "Grizl CF SL",
-    "price": 2399,
-    "frame": "carbon",
-    "url": "https://www.canyon.com"
-  },
-  {
-    "dealer": "Canyon",
-    "model": "Grizl CF SL",
-    "price": 2399,
-    "frame": "carbon",
+    "old_price": 2999,
+    "discount": 20,
+    "sizes": ["M","L"],
     "url": "https://www.canyon.com"
   }
 ]
