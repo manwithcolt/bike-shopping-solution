@@ -2,7 +2,14 @@ async function loadBikes() {
     const res = await fetch('data.json');
     let bikes = await res.json();
 
-    const carbonKeywords = ["carbon", "cf", "c:62", "cfr", "slr", "advanced"];
+    const carbonKeywords = [
+        "carbon",
+        "cf",
+        "c:62",
+        "cfr",
+        "slr",
+        "advanced"
+    ];
 
     const onlyCarbon = document.getElementById("carbonOnly").checked;
 
@@ -15,33 +22,68 @@ async function loadBikes() {
     }
 
     const container = document.getElementById("bikes");
-    container.innerHTML += `
-<div class="bike">
-    <h3>${b.model}</h3>
+    container.innerHTML = "";
 
-    <p><b>Händler:</b> ${b.dealer}</p>
-    <p><b>Kategorie:</b> ${b.category}</p>
-    <p><b>Rahmen:</b> ${b.frame}</p>
-    <p><b>Schaltung:</b> ${b.groupset}</p>
-    <p><b>Gewicht:</b> ${b.weight}</p>
-    <p><b>Laufräder:</b> ${b.wheelset}</p>
+    bikes.forEach(b => {
 
-    <p>
-      <b>${b.price} €</b>
-      statt ${b.old_price} €
-      (-${b.discount}%)
-    </p>
+        const oldPrice = b.old_price
+            ? `${b.old_price} €`
+            : "-";
 
-    <p><b>Größen:</b> ${b.sizes.join(", ")}</p>
+        const discount = b.discount
+            ? `(-${b.discount}%)`
+            : "";
 
-    <a href="${b.url}" target="_blank">
-      Zum Angebot
-    </a>
-</div>
-`;
+        const sizes = Array.isArray(b.sizes)
+            ? b.sizes.join(", ")
+            : "-";
+
+        container.innerHTML += `
+            <div class="bike">
+
+                <h2>${b.model || "-"}</h2>
+
+                <p><strong>Händler:</strong> ${b.dealer || "-"}</p>
+
+                <p><strong>Kategorie:</strong> ${b.category || "-"}</p>
+
+                <p><strong>Rahmen:</strong> ${b.frame || "-"}</p>
+
+                <p><strong>Schaltung:</strong> ${b.groupset || "-"}</p>
+
+                <p><strong>Gewicht:</strong> ${b.weight || "-"}</p>
+
+                <p><strong>Laufräder:</strong> ${b.wheelset || "-"}</p>
+
+                <p>
+                    <strong>Preis:</strong>
+                    ${b.price || "-"} €
+                </p>
+
+                <p>
+                    <strong>Vorher:</strong>
+                    ${oldPrice}
+                    ${discount}
+                </p>
+
+                <p>
+                    <strong>Größen:</strong>
+                    ${sizes}
+                </p>
+
+                <p>
+                    <a href="${b.url}" target="_blank">
+                        Zum Angebot
+                    </a>
+                </p>
+
+            </div>
         `;
     });
 }
 
-document.getElementById("carbonOnly").addEventListener("change", loadBikes);
+document
+    .getElementById("carbonOnly")
+    .addEventListener("change", loadBikes);
+
 loadBikes();
