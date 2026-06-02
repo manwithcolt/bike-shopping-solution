@@ -10,8 +10,9 @@
     "price": 2399,
     "old_price": 2999,
     "discount": 20,
-    "sizes": ["M","L"],
     "deal_score": 92,
+    "first_seen": "2026-06-03",
+    "sizes": ["M","L"],
     "url": "https://www.canyon.com"
   }
 ]
