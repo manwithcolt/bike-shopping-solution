@@ -9,10 +9,15 @@
 <body>
 
 <div class="header">
+
     <h1>🚲 Bike Radar</h1>
-    <p class="subtitle">Carbon Gravel & Rennrad Deals</p>
+
+    <p class="subtitle">
+        Carbon Gravel & Rennrad Deals
+    </p>
 
     <div class="stats">
+
         <div class="stat">
             <span id="bikeCount">0</span>
             <small>Bikes</small>
@@ -22,20 +27,28 @@
             <span id="avgDiscount">0%</span>
             <small>Ø Rabatt</small>
         </div>
+
     </div>
+
 </div>
 
 <div class="filters">
 
     <label>
-        <input type="checkbox" id="carbonOnly" checked>
+        <input
+            type="checkbox"
+            id="carbonOnly"
+            checked>
         Nur Carbon
     </label>
 
     <br><br>
 
     <label>
-        <input type="checkbox" id="gravelOnly" checked>
+        <input
+            type="checkbox"
+            id="gravelOnly"
+            checked>
         Nur Gravel
     </label>
 
@@ -49,9 +62,36 @@
             value="3000">
     </label>
 
+    <br><br>
+
+    <strong>Quellen</strong>
+
+    <br><br>
+
+    <label>
+        <input
+            type="checkbox"
+            id="saleSource"
+            checked>
+        Canyon Sale
+    </label>
+
+    <br>
+
+    <label>
+        <input
+            type="checkbox"
+            id="outletSource"
+            checked>
+        Canyon Outlet
+    </label>
+
 </div>
 
-<div id="bikeCards" class="cards"></div>
+<div
+    id="bikeCards"
+    class="cards">
+</div>
 
 <script src="script.js"></script>
 
