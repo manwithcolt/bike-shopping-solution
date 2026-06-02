@@ -1,22 +1,22 @@
 import json
 
-bikes = []
+bikes = [
+    {
+        "dealer": "Canyon",
+        "model": "Grail CF 8 1by",
+        "category": "Gravel",
+        "frame": "Carbon",
+        "groupset": "Shimano GRX RX822 12s",
+        "wheelset": "DT Swiss G1800",
+        "weight": "8.88 kg",
+        "price": 2299,
+        "old_price": 2999,
+        "discount": 23,
+        "deal_score": 96,
+        "is_new": True,
+        "url": "https://www.canyon.com/de-de/gravel-bikes/race/grail/cf/grail-cf-8-1by/4148.html"
+    }
+]
 
-bikes.append({
-“dealer”: “Canyon”,
-“model”: “Grail CF 8 1by”,
-“category”: “Gravel”,
-“frame”: “Carbon”,
-“groupset”: “Shimano GRX RX822 12s”,
-“wheelset”: “DT Swiss G1800”,
-“weight”: “8.88 kg”,
-“price”: 2299,
-“old_price”: 2999,
-“discount”: 23,
-“deal_score”: 96,
-“is_new”: True,
-“url”: “https://www.canyon.com/de-de/gravel-bikes/race/grail/cf/grail-cf-8-1by/4148.html”
-})
-
-with open(“data.json”, “w”) as f:
-json.dump(bikes, f, indent=2)
+with open("data.json", "w") as f:
+    json.dump(bikes, f, indent=2)
