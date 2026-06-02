@@ -17,6 +17,9 @@ async function loadBikes() {
     const outletSource =
         document.getElementById("outletSource")?.checked ?? true;
 
+    const stateraSource =
+        document.getElementById("stateraSource")?.checked ?? true;
+
     const maxPrice =
         parseInt(
             document.getElementById("maxPrice")?.value || 999999
@@ -50,15 +53,22 @@ async function loadBikes() {
             (b.source || "").toLowerCase();
 
         if (
-            source.includes("sale")
+            source.includes("canyon sale")
             && saleSource
         ) {
             return true;
         }
 
         if (
-            source.includes("outlet")
+            source.includes("canyon outlet")
             && outletSource
+        ) {
+            return true;
+        }
+
+        if (
+            source.includes("statera")
+            && stateraSource
         ) {
             return true;
         }
@@ -166,6 +176,19 @@ async function loadBikes() {
             badges += `
                 <span class="badge-price">
                     🏪 OUTLET
+                </span>
+            `;
+        }
+
+        if (
+            (b.source || "")
+            .toLowerCase()
+            .includes("statera")
+        ) {
+
+            badges += `
+                <span class="badge-new">
+                    ⚡ STATERA
                 </span>
             `;
         }
@@ -285,6 +308,13 @@ document
 
 document
     .getElementById("outletSource")
+    ?.addEventListener(
+        "change",
+        loadBikes
+    );
+
+document
+    .getElementById("stateraSource")
     ?.addEventListener(
         "change",
         loadBikes
