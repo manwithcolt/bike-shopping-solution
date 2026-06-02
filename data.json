@@ -6,13 +6,36 @@
     "frame": "Carbon",
     "groupset": "Shimano GRX 820",
     "weight": "8.9 kg",
-    "wheelset": "DT Swiss G1800",
     "price": 2399,
     "old_price": 2999,
     "discount": 20,
     "deal_score": 92,
-    "first_seen": "2026-06-03",
-    "sizes": ["M","L"],
     "url": "https://www.canyon.com"
+  },
+  {
+    "dealer": "RABE",
+    "model": "Bianchi Impulso Comp",
+    "category": "Gravel",
+    "frame": "Carbon",
+    "groupset": "Shimano GRX 820",
+    "weight": "9.2 kg",
+    "price": 2299,
+    "old_price": 2799,
+    "discount": 18,
+    "deal_score": 85,
+    "url": "https://www.rabe-bike.de"
+  },
+  {
+    "dealer": "STATERA",
+    "model": "Orbea Terra M30",
+    "category": "Gravel",
+    "frame": "Carbon",
+    "groupset": "Shimano GRX 610",
+    "weight": "9.4 kg",
+    "price": 2199,
+    "old_price": 2899,
+    "discount": 24,
+    "deal_score": 96,
+    "url": "https://www.statera.de"
   }
 ]
