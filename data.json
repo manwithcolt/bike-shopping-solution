@@ -10,6 +10,7 @@
     "old_price": 2999,
     "discount": 20,
     "deal_score": 92,
+    "is_new": true,
     "url": "https://www.canyon.com"
   },
   {
@@ -23,6 +24,7 @@
     "old_price": 2799,
     "discount": 18,
     "deal_score": 85,
+    "is_new": false,
     "url": "https://www.rabe-bike.de"
   },
   {
@@ -36,6 +38,7 @@
     "old_price": 2899,
     "discount": 24,
     "deal_score": 96,
+    "is_new": true,
     "url": "https://www.statera.de"
   }
 ]
