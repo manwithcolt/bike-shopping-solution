@@ -9,6 +9,7 @@ async function loadBikes() {
         document.getElementById("carbonOnly").checked;
 
     if (carbonOnly) {
+
         bikes = bikes.filter(
             b => (b.frame || "")
                 .toLowerCase()
@@ -16,69 +17,42 @@ async function loadBikes() {
         );
     }
 
-    bikes.sort((a, b) => {
-
-        if (currentSort === "weight") {
-
-            const wa = parseFloat(
-                (a.weight || "999")
-                    .replace(" kg", "")
-            );
-
-            const wb = parseFloat(
-                (b.weight || "999")
-                    .replace(" kg", "")
-            );
-
-            return wa - wb;
-        }
-
-        return (b[currentSort] || 0)
-            - (a[currentSort] || 0);
-
-    });
+    bikes.sort(
+        (a, b) =>
+            (b.deal_score || 0) -
+            (a.deal_score || 0)
+    );
 
     document.getElementById("bikeCount").innerText =
         bikes.length;
 
-    if (bikes.length > 0) {
+    const avg =
+        bikes.reduce(
+            (s, b) => s + (b.discount || 0),
+            0
+        ) / bikes.length;
 
-        const avg =
-            bikes.reduce(
-                (s, b) => s + (b.discount || 0),
-                0
-            ) / bikes.length;
+    document.getElementById("avgDiscount").innerText =
+        Math.round(avg) + "%";
 
-        document.getElementById("avgDiscount").innerText =
-            Math.round(avg) + "%";
+    const container =
+        document.getElementById("bikeCards");
 
-    } else {
-
-        document.getElementById("avgDiscount").innerText =
-            "0%";
-
-    }
-
-    const table =
-        document.getElementById("bikeTable");
-
-    table.innerHTML = "";
+    container.innerHTML = "";
 
     bikes.forEach(b => {
 
         let scoreClass = "score-yellow";
 
-        if ((b.deal_score || 0) >= 95) {
+        if ((b.deal_score || 0) >= 95)
             scoreClass = "score-red";
-        }
-        else if ((b.deal_score || 0) >= 85) {
+        else if ((b.deal_score || 0) >= 85)
             scoreClass = "score-green";
-        }
 
-        let badge = "";
+        let badges = "";
 
-        if (b.is_new === true) {
-            badge += `
+        if (b.is_new) {
+            badges += `
                 <span class="badge-new">
                     🆕 NEU
                 </span>
@@ -86,68 +60,72 @@ async function loadBikes() {
         }
 
         if ((b.deal_score || 0) >= 95) {
-            badge += `
+            badges += `
                 <span class="badge-deal">
                     🔥 BEST DEAL
                 </span>
             `;
         }
 
-        table.innerHTML += `
-            <tr>
+        container.innerHTML += `
 
-                <td>
-                    <span class="score ${scoreClass}">
-                        ${b.deal_score || 0}
-                    </span>
-                </td>
+        <div class="bike-card">
 
-                <td>
+            <div class="card-top">
 
-                    ${badge}
+                <span class="score ${scoreClass}">
+                    ${b.deal_score}
+                </span>
 
-                    <br>
+                <div class="badges">
+                    ${badges}
+                </div>
 
-                    <a href="${b.url}" target="_blank">
-                        ${b.model}
-                    </a>
+            </div>
 
-                </td>
+            <div class="model">
+                ${b.model}
+            </div>
 
-                <td>
-                    ${b.price || "-"} €
-                </td>
+            <div class="price">
+                ${b.price} €
+            </div>
 
-                <td>
-                    ${b.old_price || "-"} €
-                </td>
+            <div class="old-price">
+                statt ${b.old_price} €
+            </div>
 
-                <td class="discount">
-                    -${b.discount || 0}%
-                </td>
+            <div class="discount">
+                -${b.discount}%
+            </div>
 
-                <td>
-                    ${b.weight || "-"}
-                </td>
+            <div class="details">
 
-                <td>
-                    ${b.groupset || "-"}
-                </td>
+                <div>
+                    ⚖️ ${b.weight}
+                </div>
 
-                <td>
-                    ${b.dealer || "-"}
-                </td>
+                <div>
+                    ⚙️ ${b.groupset}
+                </div>
 
-            </tr>
+                <div>
+                    🏪 ${b.dealer}
+                </div>
+
+            </div>
+
+            <a
+                class="buy-button"
+                href="${b.url}"
+                target="_blank">
+                Zum Angebot
+            </a>
+
+        </div>
+
         `;
     });
-}
-
-function sortBy(field) {
-
-    currentSort = field;
-
-    loadBikes();
 }
 
 document
