@@ -1,30 +1,49 @@
 import json
 
-def load():
-    try:
-        with open("data.json", "r") as f:
-            return json.load(f)
-    except:
-        return []
+bikes = [
+    {
+        "dealer": "Canyon",
+        "model": "Grizl CF SL 8",
+        "category": "Gravel",
+        "frame": "Carbon",
+        "groupset": "Shimano GRX 820",
+        "weight": "8.9 kg",
+        "price": 2399,
+        "old_price": 2999,
+        "discount": 20,
+        "deal_score": 92,
+        "is_new": True,
+        "url": "https://www.canyon.com"
+    },
+    {
+        "dealer": "STATERA",
+        "model": "Orbea Terra M30",
+        "category": "Gravel",
+        "frame": "Carbon",
+        "groupset": "Shimano GRX 610",
+        "weight": "9.4 kg",
+        "price": 2199,
+        "old_price": 2899,
+        "discount": 24,
+        "deal_score": 96,
+        "is_new": True,
+        "url": "https://www.statera.de"
+    },
+    {
+        "dealer": "RABE",
+        "model": "Bianchi Impulso Comp",
+        "category": "Gravel",
+        "frame": "Carbon",
+        "groupset": "Shimano GRX 820",
+        "weight": "9.2 kg",
+        "price": 2299,
+        "old_price": 2799,
+        "discount": 18,
+        "deal_score": 85,
+        "is_new": False,
+        "url": "https://www.rabe-bike.de"
+    }
+]
 
-def save(data):
-    with open("data.json", "w") as f:
-        json.dump(data, f, indent=2)
-
-bikes = load()
-
-# Demo-Daten (später echte Shops)
-new_bike = {
-    "dealer": "Canyon",
-    "model": "Grizl CF SL",
-    "price": 2399,
-    "frame": "carbon",
-    "url": "https://www.canyon.com"
-}
-
-if not any(
-    b.get("model") == new_bike["model"]
-    and b.get("dealer") == new_bike["dealer"]
-    for b in bikes
-):
-    bikes.append(new_bike)
+with open("data.json", "w") as f:
+    json.dump(bikes, f, indent=2)
