@@ -6,10 +6,16 @@ async function loadBikes() {
     let bikes = await res.json();
 
     const carbonOnly =
-        document.getElementById("carbonOnly").checked;
+        document.getElementById("carbonOnly")?.checked ?? false;
 
     const gravelOnly =
         document.getElementById("gravelOnly")?.checked ?? false;
+
+    const saleSource =
+        document.getElementById("saleSource")?.checked ?? true;
+
+    const outletSource =
+        document.getElementById("outletSource")?.checked ?? true;
 
     const maxPrice =
         parseInt(
@@ -17,6 +23,7 @@ async function loadBikes() {
         );
 
     if (carbonOnly) {
+
         bikes = bikes.filter(
             b => (b.frame || "")
                 .toLowerCase()
@@ -25,6 +32,7 @@ async function loadBikes() {
     }
 
     if (gravelOnly) {
+
         bikes = bikes.filter(
             b => (b.category || "")
                 .toLowerCase()
@@ -36,43 +44,79 @@ async function loadBikes() {
         b => (b.price || 0) <= maxPrice
     );
 
+    bikes = bikes.filter(b => {
+
+        const source =
+            (b.source || "").toLowerCase();
+
+        if (
+            source.includes("sale")
+            && saleSource
+        ) {
+            return true;
+        }
+
+        if (
+            source.includes("outlet")
+            && outletSource
+        ) {
+            return true;
+        }
+
+        return false;
+    });
+
     bikes.sort(
         (a, b) =>
-            (b.deal_score || 0) -
-            (a.deal_score || 0)
+            (b.deal_score || 0)
+            - (a.deal_score || 0)
     );
 
-    document.getElementById("bikeCount").innerText =
-        bikes.length;
+    document.getElementById(
+        "bikeCount"
+    ).innerText = bikes.length;
 
     const avg =
-        bikes.length
+        bikes.length > 0
             ? bikes.reduce(
-                (s, b) => s + (b.discount || 0),
+                (s, b) =>
+                    s + (b.discount || 0),
                 0
             ) / bikes.length
             : 0;
 
-    document.getElementById("avgDiscount").innerText =
+    document.getElementById(
+        "avgDiscount"
+    ).innerText =
         Math.round(avg) + "%";
 
     const container =
-        document.getElementById("bikeCards");
+        document.getElementById(
+            "bikeCards"
+        );
 
     container.innerHTML = "";
 
     bikes.forEach(b => {
 
-        let scoreClass = "score-yellow";
+        let scoreClass =
+            "score-yellow";
 
-        if ((b.deal_score || 0) >= 95)
+        if (
+            (b.deal_score || 0) >= 95
+        ) {
             scoreClass = "score-red";
-        else if ((b.deal_score || 0) >= 85)
+        }
+        else if (
+            (b.deal_score || 0) >= 85
+        ) {
             scoreClass = "score-green";
+        }
 
         let badges = "";
 
         if (b.is_new) {
+
             badges += `
                 <span class="badge-new">
                     🆕 NEU
@@ -81,6 +125,7 @@ async function loadBikes() {
         }
 
         if (b.price_dropped) {
+
             badges += `
                 <span class="badge-price">
                     📉 PREIS GEFALLEN
@@ -88,7 +133,10 @@ async function loadBikes() {
             `;
         }
 
-        if ((b.deal_score || 0) >= 95) {
+        if (
+            (b.deal_score || 0) >= 95
+        ) {
+
             badges += `
                 <span class="badge-deal">
                     🔥 BEST DEAL
@@ -96,7 +144,12 @@ async function loadBikes() {
             `;
         }
 
-        if ((b.source || "").toLowerCase().includes("sale")) {
+        if (
+            (b.source || "")
+            .toLowerCase()
+            .includes("sale")
+        ) {
+
             badges += `
                 <span class="badge-sale">
                     🏷 SALE
@@ -104,14 +157,31 @@ async function loadBikes() {
             `;
         }
 
+        if (
+            (b.source || "")
+            .toLowerCase()
+            .includes("outlet")
+        ) {
+
+            badges += `
+                <span class="badge-price">
+                    🏪 OUTLET
+                </span>
+            `;
+        }
+
         let bikeUrl = b.url;
 
         if (
-            bikeUrl === "https://www.canyon.com"
+            bikeUrl ===
+            "https://www.canyon.com"
         ) {
+
             bikeUrl =
-                "https://www.canyon.com/de-de/search/?q=" +
-                encodeURIComponent(b.model);
+                "https://www.canyon.com/de-de/search/?q="
+                + encodeURIComponent(
+                    b.model
+                );
         }
 
         container.innerHTML += `
@@ -154,17 +224,29 @@ async function loadBikes() {
 
             <div class="details">
 
-                <div>⚖️ ${b.weight}</div>
+                <div>
+                    ⚖️ ${b.weight}
+                </div>
 
-                <div>⚙️ ${b.groupset}</div>
+                <div>
+                    ⚙️ ${b.groupset}
+                </div>
 
-                <div>🏪 ${b.dealer}</div>
+                <div>
+                    🏪 ${b.dealer}
+                </div>
 
-                <div>🏷 ${b.source || "Direkt"}</div>
+                <div>
+                    🏷 ${b.source}
+                </div>
 
-                <div>🚲 ${b.category}</div>
+                <div>
+                    🚲 ${b.category}
+                </div>
 
-                <div>⭐ Score ${b.deal_score}</div>
+                <div>
+                    ⭐ Score ${b.deal_score}
+                </div>
 
             </div>
 
@@ -182,14 +264,37 @@ async function loadBikes() {
 
 document
     .getElementById("carbonOnly")
-    ?.addEventListener("change", loadBikes);
+    ?.addEventListener(
+        "change",
+        loadBikes
+    );
 
 document
     .getElementById("gravelOnly")
-    ?.addEventListener("change", loadBikes);
+    ?.addEventListener(
+        "change",
+        loadBikes
+    );
+
+document
+    .getElementById("saleSource")
+    ?.addEventListener(
+        "change",
+        loadBikes
+    );
+
+document
+    .getElementById("outletSource")
+    ?.addEventListener(
+        "change",
+        loadBikes
+    );
 
 document
     .getElementById("maxPrice")
-    ?.addEventListener("input", loadBikes);
+    ?.addEventListener(
+        "input",
+        loadBikes
+    );
 
 loadBikes();
