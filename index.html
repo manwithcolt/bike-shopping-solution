@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,55 +10,91 @@
 
 <body>
 
-<div class="header">
-    <h1>🚲 Bike Radar</h1>
+    <div class="header">
 
-    <div class="stats">
-        <div class="stat">
-            <span id="bikeCount">0</span>
-            <small>Bikes</small>
+        <div>
+            <h1>🚲 Bike Radar</h1>
+            <p class="subtitle">
+                Carbon Gravel & Rennrad Deals
+            </p>
         </div>
 
-        <div class="stat">
-            <span id="avgDiscount">0%</span>
-            <small>Ø Rabatt</small>
+        <div class="stats">
+
+            <div class="stat">
+                <span id="bikeCount">0</span>
+                <small>Bikes</small>
+            </div>
+
+            <div class="stat">
+                <span id="avgDiscount">0%</span>
+                <small>Ø Rabatt</small>
+            </div>
+
         </div>
+
     </div>
-</div>
 
-<div class="filters">
+    <div class="filters">
 
-    <label>
-        <input type="checkbox" id="carbonOnly" checked>
-        Nur Carbon
-    </label>
+        <label>
+            <input type="checkbox" id="carbonOnly" checked>
+            Nur Carbon
+        </label>
 
-</div>
+    </div>
 
-<div class="table-container">
+    <div class="table-container">
 
-    <table>
+        <table>
 
-        <thead>
-            <tr>
-                <th>🔥</th>
-                <th>Modell</th>
-                <th>Preis</th>
-                <th>Vorher</th>
-                <th>Rabatt</th>
-                <th>Gewicht</th>
-                <th>Schaltung</th>
-                <th>Händler</th>
-            </tr>
-        </thead>
+            <thead>
 
-        <tbody id="bikeTable"></tbody>
+                <tr>
+                    <th onclick="sortBy('deal_score')">
+                        🔥 Score
+                    </th>
 
-    </table>
+                    <th>
+                        Modell
+                    </th>
 
-</div>
+                    <th onclick="sortBy('price')">
+                        Preis
+                    </th>
 
-<script src="script.js"></script>
+                    <th>
+                        Vorher
+                    </th>
+
+                    <th onclick="sortBy('discount')">
+                        Rabatt
+                    </th>
+
+                    <th onclick="sortBy('weight')">
+                        Gewicht
+                    </th>
+
+                    <th>
+                        Schaltung
+                    </th>
+
+                    <th>
+                        Händler
+                    </th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="bikeTable"></tbody>
+
+        </table>
+
+    </div>
+
+    <script src="script.js"></script>
 
 </body>
+
 </html>
