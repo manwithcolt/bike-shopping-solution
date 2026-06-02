@@ -52,6 +52,7 @@ async function loadBikes() {
         let badges = "";
 
         if (b.is_new) {
+
             badges += `
                 <span class="badge-new">
                     🆕 NEU
@@ -59,7 +60,17 @@ async function loadBikes() {
             `;
         }
 
+        if (b.price_dropped) {
+
+            badges += `
+                <span class="badge-price">
+                    📉 PREIS GEFALLEN
+                </span>
+            `;
+        }
+
         if ((b.deal_score || 0) >= 95) {
+
             badges += `
                 <span class="badge-deal">
                     🔥 BEST DEAL
@@ -111,6 +122,10 @@ async function loadBikes() {
 
                 <div>
                     🏪 ${b.dealer}
+                </div>
+
+                <div>
+                    📅 Seit ${b.first_seen || "-"}
                 </div>
 
             </div>
