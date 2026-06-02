@@ -10,8 +10,10 @@
     "old_price": 2999,
     "discount": 23,
     "deal_score": 96,
-    "is_new": true,
-    "url": "https://www.canyon.com/de-de/gravel-bikes/race/grail/cf/grail-cf-8-1by/4148.html"
+    "url": "https://www.canyon.com/de-de/gravel-bikes/race/grail/cf/grail-cf-8-1by/4148.html",
+    "is_new": false,
+    "price_dropped": false,
+    "first_seen": "2026-06-02"
   },
   {
     "dealer": "Canyon",
@@ -24,8 +26,10 @@
     "old_price": 2999,
     "discount": 20,
     "deal_score": 92,
-    "is_new": true,
-    "url": "https://www.canyon.com"
+    "url": "https://www.canyon.com",
+    "is_new": false,
+    "price_dropped": false,
+    "first_seen": "2026-06-02"
   },
   {
     "dealer": "Canyon",
@@ -38,7 +42,9 @@
     "old_price": 2799,
     "discount": 11,
     "deal_score": 84,
+    "url": "https://www.canyon.com",
     "is_new": false,
-    "url": "https://www.canyon.com"
+    "price_dropped": false,
+    "first_seen": "2026-06-02"
   }
 ]
