@@ -1,21 +1,63 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Bike Radar</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bike Radar</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
-<h1>🚲 Bike Radar</h1>
+<div class="header">
+    <h1>🚲 Bike Radar</h1>
 
-<label>
-  <input type="checkbox" id="carbonOnly" checked>
-  Nur Carbon
-</label>
+    <div class="stats">
+        <div class="stat">
+            <span id="bikeCount">0</span>
+            <small>Bikes</small>
+        </div>
 
-<div id="bikes"></div>
+        <div class="stat">
+            <span id="avgDiscount">0%</span>
+            <small>Ø Rabatt</small>
+        </div>
+    </div>
+</div>
+
+<div class="filters">
+
+    <label>
+        <input type="checkbox" id="carbonOnly" checked>
+        Nur Carbon
+    </label>
+
+</div>
+
+<div class="table-container">
+
+    <table>
+
+        <thead>
+            <tr>
+                <th>🔥</th>
+                <th>Modell</th>
+                <th>Preis</th>
+                <th>Vorher</th>
+                <th>Rabatt</th>
+                <th>Gewicht</th>
+                <th>Schaltung</th>
+                <th>Händler</th>
+            </tr>
+        </thead>
+
+        <tbody id="bikeTable"></tbody>
+
+    </table>
+
+</div>
 
 <script src="script.js"></script>
+
 </body>
 </html>
