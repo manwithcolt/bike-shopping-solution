@@ -9,15 +9,14 @@ async function loadBikes() {
         document.getElementById("carbonOnly").checked;
 
     const gravelOnly =
-        document.getElementById("gravelOnly").checked;
+        document.getElementById("gravelOnly")?.checked ?? false;
 
     const maxPrice =
         parseInt(
-            document.getElementById("maxPrice").value
-        ) || 999999;
+            document.getElementById("maxPrice")?.value || 999999
+        );
 
     if (carbonOnly) {
-
         bikes = bikes.filter(
             b => (b.frame || "")
                 .toLowerCase()
@@ -26,7 +25,6 @@ async function loadBikes() {
     }
 
     if (gravelOnly) {
-
         bikes = bikes.filter(
             b => (b.category || "")
                 .toLowerCase()
@@ -47,17 +45,16 @@ async function loadBikes() {
     document.getElementById("bikeCount").innerText =
         bikes.length;
 
-    if (bikes.length > 0) {
-
-        const avg =
-            bikes.reduce(
+    const avg =
+        bikes.length
+            ? bikes.reduce(
                 (s, b) => s + (b.discount || 0),
                 0
-            ) / bikes.length;
+            ) / bikes.length
+            : 0;
 
-        document.getElementById("avgDiscount").innerText =
-            Math.round(avg) + "%";
-    }
+    document.getElementById("avgDiscount").innerText =
+        Math.round(avg) + "%";
 
     const container =
         document.getElementById("bikeCards");
@@ -75,18 +72,27 @@ async function loadBikes() {
 
         let badges = "";
 
-        if (b.is_new)
+        if (b.is_new) {
             badges += `<span class="badge-new">🆕 NEU</span>`;
+        }
 
-        if (b.price_dropped)
+        if (b.price_dropped) {
             badges += `<span class="badge-price">📉 PREIS GEFALLEN</span>`;
+        }
 
-        if ((b.deal_score || 0) >= 95)
+        if ((b.deal_score || 0) >= 95) {
             badges += `<span class="badge-deal">🔥 BEST DEAL</span>`;
+        }
 
         container.innerHTML += `
 
         <div class="bike-card">
+
+            <img
+                class="bike-image"
+                src="${b.image}"
+                alt="${b.model}"
+            >
 
             <div class="card-top">
 
@@ -117,10 +123,15 @@ async function loadBikes() {
             </div>
 
             <div class="details">
+
                 <div>⚖️ ${b.weight}</div>
+
                 <div>⚙️ ${b.groupset}</div>
+
                 <div>🏪 ${b.dealer}</div>
-                <div>📅 Seit ${b.first_seen || "-"}</div>
+
+                <div>🚲 ${b.category}</div>
+
             </div>
 
             <a
@@ -137,14 +148,14 @@ async function loadBikes() {
 
 document
     .getElementById("carbonOnly")
-    .addEventListener("change", loadBikes);
+    ?.addEventListener("change", loadBikes);
 
 document
     .getElementById("gravelOnly")
-    .addEventListener("change", loadBikes);
+    ?.addEventListener("change", loadBikes);
 
 document
     .getElementById("maxPrice")
-    .addEventListener("input", loadBikes);
+    ?.addEventListener("input", loadBikes);
 
 loadBikes();
