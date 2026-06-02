@@ -104,6 +104,16 @@ async function loadBikes() {
             `;
         }
 
+        let bikeUrl = b.url;
+
+        if (
+            bikeUrl === "https://www.canyon.com"
+        ) {
+            bikeUrl =
+                "https://www.canyon.com/de-de/search/?q=" +
+                encodeURIComponent(b.model);
+        }
+
         container.innerHTML += `
 
         <div class="bike-card">
@@ -160,7 +170,7 @@ async function loadBikes() {
 
             <a
                 class="buy-button"
-                href="${b.url}"
+                href="${bikeUrl}"
                 target="_blank">
                 Zum Angebot
             </a>
