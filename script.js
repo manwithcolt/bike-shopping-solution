@@ -75,6 +75,24 @@ async function loadBikes() {
             scoreClass = "score-green";
         }
 
+        let badge = "";
+
+        if (b.is_new === true) {
+            badge += `
+                <span class="badge-new">
+                    🆕 NEU
+                </span>
+            `;
+        }
+
+        if ((b.deal_score || 0) >= 95) {
+            badge += `
+                <span class="badge-deal">
+                    🔥 BEST DEAL
+                </span>
+            `;
+        }
+
         table.innerHTML += `
             <tr>
 
@@ -85,9 +103,15 @@ async function loadBikes() {
                 </td>
 
                 <td>
+
+                    ${badge}
+
+                    <br>
+
                     <a href="${b.url}" target="_blank">
                         ${b.model}
                     </a>
+
                 </td>
 
                 <td>
