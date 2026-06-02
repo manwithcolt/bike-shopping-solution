@@ -73,15 +73,35 @@ async function loadBikes() {
         let badges = "";
 
         if (b.is_new) {
-            badges += `<span class="badge-new">🆕 NEU</span>`;
+            badges += `
+                <span class="badge-new">
+                    🆕 NEU
+                </span>
+            `;
         }
 
         if (b.price_dropped) {
-            badges += `<span class="badge-price">📉 PREIS GEFALLEN</span>`;
+            badges += `
+                <span class="badge-price">
+                    📉 PREIS GEFALLEN
+                </span>
+            `;
         }
 
         if ((b.deal_score || 0) >= 95) {
-            badges += `<span class="badge-deal">🔥 BEST DEAL</span>`;
+            badges += `
+                <span class="badge-deal">
+                    🔥 BEST DEAL
+                </span>
+            `;
+        }
+
+        if ((b.source || "").toLowerCase().includes("sale")) {
+            badges += `
+                <span class="badge-sale">
+                    🏷 SALE
+                </span>
+            `;
         }
 
         container.innerHTML += `
@@ -130,7 +150,11 @@ async function loadBikes() {
 
                 <div>🏪 ${b.dealer}</div>
 
+                <div>🏷 ${b.source || "Direkt"}</div>
+
                 <div>🚲 ${b.category}</div>
+
+                <div>⭐ Score ${b.deal_score}</div>
 
             </div>
 
