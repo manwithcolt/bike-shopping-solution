@@ -31,7 +31,7 @@
     "discount": 20,
     "deal_score": 90,
     "url": "https://www.canyon.com",
-    "is_new": true,
+    "is_new": false,
     "price_dropped": false,
     "first_seen": "2026-06-02"
   },
@@ -49,7 +49,7 @@
     "discount": 20,
     "deal_score": 92,
     "url": "https://www.canyon.com",
-    "is_new": true,
+    "is_new": false,
     "price_dropped": false,
     "first_seen": "2026-06-02"
   },
@@ -67,7 +67,7 @@
     "discount": 19,
     "deal_score": 87,
     "url": "https://www.canyon.com",
-    "is_new": true,
+    "is_new": false,
     "price_dropped": false,
     "first_seen": "2026-06-02"
   },
@@ -85,7 +85,7 @@
     "discount": 11,
     "deal_score": 84,
     "url": "https://www.canyon.com",
-    "is_new": true,
+    "is_new": false,
     "price_dropped": false,
     "first_seen": "2026-06-02"
   }
