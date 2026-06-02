@@ -14,20 +14,6 @@
     "url": "https://www.canyon.com"
   },
   {
-    "dealer": "RABE",
-    "model": "Bianchi Impulso Comp",
-    "category": "Gravel",
-    "frame": "Carbon",
-    "groupset": "Shimano GRX 820",
-    "weight": "9.2 kg",
-    "price": 2299,
-    "old_price": 2799,
-    "discount": 18,
-    "deal_score": 85,
-    "is_new": false,
-    "url": "https://www.rabe-bike.de"
-  },
-  {
     "dealer": "STATERA",
     "model": "Orbea Terra M30",
     "category": "Gravel",
@@ -40,5 +26,19 @@
     "deal_score": 96,
     "is_new": true,
     "url": "https://www.statera.de"
+  },
+  {
+    "dealer": "RABE",
+    "model": "Bianchi Impulso Comp",
+    "category": "Gravel",
+    "frame": "Carbon",
+    "groupset": "Shimano GRX 820",
+    "weight": "9.2 kg",
+    "price": 2299,
+    "old_price": 2799,
+    "discount": 18,
+    "deal_score": 85,
+    "is_new": false,
+    "url": "https://www.rabe-bike.de"
   }
 ]
