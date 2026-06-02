@@ -1,6 +1,9 @@
 import json
+from datetime import date
 
-bikes = [
+TODAY = str(date.today())
+
+new_bikes = [
     {
         "dealer": "Canyon",
         "model": "Grail CF 8 1by",
@@ -12,7 +15,6 @@ bikes = [
         "old_price": 2999,
         "discount": 23,
         "deal_score": 96,
-        "is_new": True,
         "url": "https://www.canyon.com/de-de/gravel-bikes/race/grail/cf/grail-cf-8-1by/4148.html"
     },
     {
@@ -26,7 +28,6 @@ bikes = [
         "old_price": 2999,
         "discount": 20,
         "deal_score": 92,
-        "is_new": True,
         "url": "https://www.canyon.com"
     },
     {
@@ -40,10 +41,39 @@ bikes = [
         "old_price": 2799,
         "discount": 11,
         "deal_score": 84,
-        "is_new": False,
         "url": "https://www.canyon.com"
     }
 ]
 
+try:
+    with open("data.json", "r") as f:
+        old_bikes = json.load(f)
+except:
+    old_bikes = []
+
+for bike in new_bikes:
+
+    bike["is_new"] = True
+    bike["price_dropped"] = False
+    bike["first_seen"] = TODAY
+
+    for old in old_bikes:
+
+        if (
+            old.get("dealer") == bike["dealer"]
+            and old.get("model") == bike["model"]
+        ):
+
+            bike["is_new"] = False
+            bike["first_seen"] = old.get(
+                "first_seen",
+                TODAY
+            )
+
+            if old.get("price", 999999) > bike["price"]:
+                bike["price_dropped"] = True
+
+            break
+
 with open("data.json", "w") as f:
-    json.dump(bikes, f, indent=2)
+    json.dump(new_bikes, f, indent=2)
