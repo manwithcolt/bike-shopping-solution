@@ -7,106 +7,72 @@ body {
 }
 
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     margin-bottom: 20px;
 }
 
 .subtitle {
     color: #9ca3af;
-    margin-top: -10px;
 }
 
 .stats {
     display: flex;
     gap: 15px;
+    margin-top: 20px;
 }
 
 .stat {
+    flex: 1;
     background: #1a1f27;
-    padding: 12px 18px;
-    border-radius: 12px;
+    padding: 20px;
+    border-radius: 16px;
     text-align: center;
-    min-width: 90px;
-    box-shadow: 0 4px 12px rgba(0,0,0,.25);
 }
 
 .stat span {
-    display: block;
-    font-size: 22px;
+    font-size: 42px;
     font-weight: bold;
+    display: block;
 }
 
 .filters {
     background: #1a1f27;
-    padding: 15px;
-    border-radius: 12px;
-    margin-bottom: 20px;
+    padding: 18px;
+    border-radius: 16px;
+    margin: 20px 0;
 }
 
-.table-container {
-    overflow-x: auto;
+.cards {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
+.bike-card {
     background: #1a1f27;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 16px rgba(0,0,0,.3);
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: 0 6px 20px rgba(0,0,0,.3);
 }
 
-thead {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-}
-
-th {
-    background: #222933;
-    padding: 14px;
-    text-align: left;
-    cursor: pointer;
-    user-select: none;
-    transition: background .2s;
-}
-
-th:hover {
-    background: #2c3643;
-}
-
-td {
-    padding: 14px;
-    border-top: 1px solid #2d3642;
-}
-
-tr {
-    transition: background .2s;
-}
-
-tr:hover {
-    background: #252e3a;
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .score {
-    padding: 6px 10px;
-    border-radius: 8px;
+    padding: 8px 14px;
+    border-radius: 10px;
     font-weight: bold;
-    display: inline-block;
-    min-width: 40px;
-    text-align: center;
+    font-size: 18px;
 }
 
 .score-red {
     background: #ff4757;
-    color: white;
 }
 
 .score-green {
     background: #00b894;
-    color: white;
 }
 
 .score-yellow {
@@ -114,66 +80,66 @@ tr:hover {
     color: black;
 }
 
+.badges {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.badge-new {
+    background: #3498db;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.badge-deal {
+    background: #e74c3c;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.model {
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.price {
+    font-size: 34px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.old-price {
+    color: #9ca3af;
+}
+
 .discount {
     color: #00d26a;
     font-weight: bold;
 }
 
-a {
-    color: #6ab0ff;
+.details {
+    margin-top: 15px;
+    display: grid;
+    gap: 8px;
+}
+
+.buy-button {
+    display: inline-block;
+    margin-top: 20px;
+    background: #2563eb;
+    color: white;
     text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-.badge-new {
-    background: #3498db;
-    color: white;
-    padding: 4px 8px;
-    border-radius: 6px;
-    font-size: 12px;
+    padding: 12px 18px;
+    border-radius: 10px;
     font-weight: bold;
-    margin-right: 4px;
-    display: inline-block;
-    margin-bottom: 4px;
 }
 
-.badge-deal {
-    background: #e74c3c;
-    color: white;
-    padding: 4px 8px;
-    border-radius: 6px;
-    font-size: 12px;
-    font-weight: bold;
-    display: inline-block;
-    margin-bottom: 4px;
-}
-
-@media (max-width: 700px) {
-
-    body {
-        padding: 10px;
-    }
-
-    .header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-    }
-
-    .stats {
-        width: 100%;
-    }
-
-    .stat {
-        flex: 1;
-    }
-
-    th,
-    td {
-        padding: 10px;
-        font-size: 14px;
-    }
+.buy-button:hover {
+    background: #1d4ed8;
 }
