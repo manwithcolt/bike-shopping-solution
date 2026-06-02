@@ -1,49 +1,22 @@
 import json
 
-bikes = [
-    {
-        "dealer": "Canyon",
-        "model": "Grizl CF SL 8",
-        "category": "Gravel",
-        "frame": "Carbon",
-        "groupset": "Shimano GRX 820",
-        "weight": "8.9 kg",
-        "price": 2399,
-        "old_price": 2999,
-        "discount": 20,
-        "deal_score": 92,
-        "is_new": True,
-        "url": "https://www.canyon.com"
-    },
-    {
-        "dealer": "STATERA",
-        "model": "Orbea Terra M30",
-        "category": "Gravel",
-        "frame": "Carbon",
-        "groupset": "Shimano GRX 610",
-        "weight": "9.4 kg",
-        "price": 2199,
-        "old_price": 2899,
-        "discount": 24,
-        "deal_score": 96,
-        "is_new": True,
-        "url": "https://www.statera.de"
-    },
-    {
-        "dealer": "RABE",
-        "model": "Bianchi Impulso Comp",
-        "category": "Gravel",
-        "frame": "Carbon",
-        "groupset": "Shimano GRX 820",
-        "weight": "9.2 kg",
-        "price": 2299,
-        "old_price": 2799,
-        "discount": 18,
-        "deal_score": 85,
-        "is_new": False,
-        "url": "https://www.rabe-bike.de"
-    }
-]
+bikes = []
 
-with open("data.json", "w") as f:
-    json.dump(bikes, f, indent=2)
+bikes.append({
+“dealer”: “Canyon”,
+“model”: “Grail CF 8 1by”,
+“category”: “Gravel”,
+“frame”: “Carbon”,
+“groupset”: “Shimano GRX RX822 12s”,
+“wheelset”: “DT Swiss G1800”,
+“weight”: “8.88 kg”,
+“price”: 2299,
+“old_price”: 2999,
+“discount”: 23,
+“deal_score”: 96,
+“is_new”: True,
+“url”: “https://www.canyon.com/de-de/gravel-bikes/race/grail/cf/grail-cf-8-1by/4148.html”
+})
+
+with open(“data.json”, “w”) as f:
+json.dump(bikes, f, indent=2)
